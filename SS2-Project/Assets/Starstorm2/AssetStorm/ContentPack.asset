@@ -17,7 +17,8 @@ MonoBehaviour:
   - {fileID: 8477274550451897653, guid: 4737ce5d2dc287e47b4abd095f55246c, type: 3}
   masterPrefabs:
   - {fileID: 1175919788895150, guid: d97f71d977f90044e9c139cb2a51727b, type: 3}
-  projectilePrefabs: []
+  projectilePrefabs:
+  - {fileID: 7769695397524395068, guid: 7f306d3be2508744098d7de35ba4ae1b, type: 3}
   gameModePrefabs: []
   effectPrefabs:
   - {fileID: 2828564131440228581, guid: 4b7f27f7b3a18244f9657fb1b3f5633f, type: 3}

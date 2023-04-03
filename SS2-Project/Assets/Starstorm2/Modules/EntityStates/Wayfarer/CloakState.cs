@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace Starstorm2.Cores.States.Wayfarer
+namespace EntityStates.Wayfarer.Weapon
 {
     class CloakState : BaseSkillState
     {

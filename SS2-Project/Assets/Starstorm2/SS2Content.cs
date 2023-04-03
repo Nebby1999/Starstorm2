@@ -185,6 +185,8 @@ namespace Moonstorm.Starstorm2
             public static BuffDef BuffTerminationReady;
 
             public static BuffDef BuffEchelon;
+
+            public static BuffDef bdRadiationSickness;
         }
 
         public static class Elites

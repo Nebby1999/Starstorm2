@@ -21,8 +21,9 @@ MonoBehaviour:
   icon: {fileID: 0}
   activationStateMachineName: Weapon
   activationState:
-    _typeName: 
-  interruptPriority: 1
+    _typeName: EntityStates.Nuke.Weapon.ChargeSludge, Starstorm2, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  interruptPriority: 0
   baseRechargeInterval: 0
   baseMaxStock: 1
   rechargeStock: 1
@@ -31,11 +32,11 @@ MonoBehaviour:
   resetCooldownTimerOnUse: 0
   fullRestockOnAssign: 1
   dontAllowPastMaxStocks: 0
-  beginSkillCooldownOnSkillEnd: 0
+  beginSkillCooldownOnSkillEnd: 1
   cancelSprintingOnActivation: 1
   forceSprintDuringState: 0
   canceledFromSprinting: 1
   isCombatSkill: 1
   mustKeyPress: 1
   stepCount: 1
-  stepGraceDuration: 0.1
+  stepGraceDuration: 10
