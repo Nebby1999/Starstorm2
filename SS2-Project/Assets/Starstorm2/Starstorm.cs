@@ -79,8 +79,9 @@ namespace Moonstorm.Starstorm2
 
         private void SetupModCompat()
         {
-            ScepterInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.DestroyedClone.AncientScepter");
-            RiskyModInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.RiskyLives.RiskyMod");
+            //N: MSUtil has this method that just checks the bootloader, its cool and epic
+            ScepterInstalled = MSUtil.IsModInstalled("com.DestroyedClone.AncientScepter");
+            RiskyModInstalled = MSUtil.IsModInstalled("com.RiskyLives.RiskyMod");
         }
     }
 }

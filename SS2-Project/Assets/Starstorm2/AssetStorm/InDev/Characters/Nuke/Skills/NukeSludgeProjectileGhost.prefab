@@ -44,8 +44,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.57862663, g: 1, b: 0, a: 1}
-  m_Intensity: 1.8204329
-  m_Range: 1
+  m_Intensity: 0.04
+  m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -131,7 +131,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   timeMax: 1
   loop: 1
-  randomStart: 0
+  randomStart: 1
   enableNegativeLights: 0
 --- !u!1 &7765461250380188425
 GameObject:
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 7765461250573217148}
   - component: {fileID: 7765461250573217149}
   m_Layer: 0
-  m_Name: Partticles
+  m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

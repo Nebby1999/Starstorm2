@@ -1,4 +1,6 @@
-﻿using RoR2;
+﻿using R2API;
+using R2API.ScriptableObjects;
+using RoR2;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +15,15 @@ namespace Moonstorm.Starstorm2.Survivors
         public override GameObject BodyPrefab => SS2Assets.LoadAsset<GameObject>("NukeBody", SS2Bundle.Indev);
 
         public override GameObject MasterPrefab => null;
+        public override void Initialize()
+        {
+            base.Initialize();
+            var selfDamage = SS2Assets.LoadAsset<BuffDef>("bdNukeSelfDamage", SS2Bundle.Indev);
+            var immune = SS2Assets.LoadAsset<BuffDef>("bdNukeImmune", SS2Bundle.Indev);
+
+            HG.ArrayUtils.ArrayAppend(ref SS2Content.Instance.SerializableContentPack.buffDefs, selfDamage);
+            HG.ArrayUtils.ArrayAppend(ref SS2Content.Instance.SerializableContentPack.buffDefs, immune);
+        }
 
         public override void ModifyPrefab()
         {
@@ -24,7 +35,7 @@ namespace Moonstorm.Starstorm2.Survivors
             var ctp = BodyPrefab.GetComponent<CameraTargetParams>();
             ctp.cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Commando/ccpCommando.asset").WaitForCompletion();
 
-            var sludge = SS2Assets.LoadAsset<GameObject>("NukeSludgeProjectile", SS2Bundle.Indev).AddComponent<R2API.DamageAPI.ModdedDamageTypeHolderComponent>();
+            SS2Assets.LoadAsset<GameObject>("NukeSludgeProjectile", SS2Bundle.Indev).AddComponent<R2API.DamageAPI.ModdedDamageTypeHolderComponent>();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Moonstorm.Loaders;
+using R2API;
 using R2API.ScriptableObjects;
 using RoR2;
 using RoR2.ContentManagement;
@@ -228,6 +229,19 @@ namespace Moonstorm.Starstorm2
 
             LoadDispatchers = new Action[]
             {
+                delegate
+                {
+                    SS2Log.Info("Adding Colors...");
+                    foreach(SerializableDamageColor damageColor in SS2Assets.LoadAllAssetsOfType<SerializableDamageColor>(SS2Bundle.All))
+                    {
+                        ColorsAPI.AddSerializableDamageColor(damageColor);
+                    }
+
+                    foreach(SerializableColorCatalogEntry color in SS2Assets.LoadAllAssetsOfType<SerializableColorCatalogEntry>(SS2Bundle.All))
+                    {
+                        ColorsAPI.AddSerializableColor(color);
+                    }
+                },
                 delegate
                 {
                     new Modules.Scenes().Initialize();

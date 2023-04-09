@@ -30,3 +30,11 @@ MonoBehaviour:
       fieldValue:
         stringValue: 100
         objectValue: {fileID: 0}
+    - fieldName: baseSpeed
+      fieldValue:
+        stringValue: 10
+        objectValue: {fileID: 0}
+    - fieldName: baseDuration
+      fieldValue:
+        stringValue: 1
+        objectValue: {fileID: 0}

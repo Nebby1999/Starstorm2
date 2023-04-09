@@ -19,11 +19,11 @@ GameObject:
   - component: {fileID: 8344221508561183096}
   - component: {fileID: 1490247419914507419}
   - component: {fileID: 8425426925507954598}
-  - component: {fileID: 5852143836469728944}
+  - component: {fileID: -5118876146334837028}
   - component: {fileID: 2449371064909293246}
   m_Layer: 14
   m_Name: NukeSludgeProjectile
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,10 +123,10 @@ MonoBehaviour:
   m_Script: {fileID: -1819008361, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 60
+  lifetime: 10
   lifetimeExpiredEffect: {fileID: 0}
-  desiredForwardSpeed: 50
-  updateAfterFiring: 0
+  desiredForwardSpeed: 10
+  updateAfterFiring: 1
   enableVelocityOverLifetime: 0
   velocityOverLifetime:
     serializedVersion: 2
@@ -223,8 +223,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yAxisOnly: 0
-  rotationSpeed: 45
---- !u!114 &5852143836469728944
+  rotationSpeed: 225
+--- !u!114 &-5118876146334837028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,12 +233,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7769695397524395068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -343225066, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b6306fb505a0a74bae01b6881a50105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRange: 5
-  lookCone: 45
-  targetSearchInterval: 0.5
+  lookRange: 50
+  lookCone: 90
+  targetSearchInterval: 0.1
   onlySearchIfNoTarget: 1
   allowTargetLoss: 0
   testLoS: 1

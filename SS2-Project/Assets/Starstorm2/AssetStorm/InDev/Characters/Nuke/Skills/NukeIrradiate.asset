@@ -38,5 +38,5 @@ MonoBehaviour:
   canceledFromSprinting: 1
   isCombatSkill: 1
   mustKeyPress: 1
-  stepCount: 1
+  stepCount: 2
   stepGraceDuration: 10

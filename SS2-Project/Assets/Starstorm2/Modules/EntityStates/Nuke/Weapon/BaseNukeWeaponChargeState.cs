@@ -13,7 +13,7 @@ namespace EntityStates.Nuke.Weapon
 {
     public abstract class BaseNukeWeaponChargeState : BaseSkillState
     {
-        [SerializeField, Tooltip("The starting chargeCoefficient, this is also the base damage coefficient of this skill.")] 
+        [SerializeField, Tooltip("The starting chargeCoefficient, this is also the base damage coefficient of this skill.")]
         public float startingChargeCoefficient;
         [SerializeField, Tooltip("The amount of charge added to the coefficient per second, this value is multiplied by attack speed")]
         public float baseChargeGain;
@@ -38,6 +38,7 @@ namespace EntityStates.Nuke.Weapon
 #if DEBUG
             TypeName = GetType().Name;
 #endif
+            SelfDamageController.AsValidOrNull()?.SetDefaults(this);
         }
 
         public override void FixedUpdate()
@@ -52,13 +53,12 @@ namespace EntityStates.Nuke.Weapon
 #else
                 CurrentCharge += chargeGain * Time.fixedDeltaTime;
 #endif
-                if(CurrentCharge > chargeCoefficientSoftCap)
-                {
-
-                }
+                if (SelfDamageController)
+                    SelfDamageController.Charge = CurrentCharge;
 
                 if(CurrentCharge > chargeCoefficientHardCap)
                 {
+                    CurrentCharge = chargeCoefficientHardCap;
 #if DEBUG
                     SS2Log.Info($"{TypeName} hard cap reached. currentCharge: {CurrentCharge}, hardCap: {chargeCoefficientHardCap}");
 #endif
@@ -75,6 +75,12 @@ namespace EntityStates.Nuke.Weapon
         {
             BaseNukeWeaponFireState nextState = GetFireState();
             nextState.Charge = CurrentCharge;
+
+            if(SelfDamageController)
+            {
+                SelfDamageController.SetDefaults(null);
+            }
+
             outer.SetNextState(nextState);
         }
         public abstract BaseNukeWeaponFireState GetFireState();

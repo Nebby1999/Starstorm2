@@ -734,9 +734,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9df43f4fb8c7142a20338a8eb1514b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfDamageBuffDef: {fileID: 0}
-  minMaxHealthCoefficient: 0
-  maxHealthCoefficient: 0
+  _immunityBuffDef: {fileID: 11400000, guid: e9c4981f2f5ab114ca051018f3801aed, type: 2}
+  _selfDamageBuffDef: {fileID: 11400000, guid: 3777c7cda7af27c4b900e8b15e0b5f83, type: 2}
+  _selfDamageColor: {fileID: 11400000, guid: 631e35fb76ab19c41b026980e5ac5349, type: 2}
+  _maxHPCoefficientAsDamage: 0.25
+  _timeBetweenTicks: 0.25
 --- !u!1 &2735202152708560007
 GameObject:
   m_ObjectHideFlags: 0

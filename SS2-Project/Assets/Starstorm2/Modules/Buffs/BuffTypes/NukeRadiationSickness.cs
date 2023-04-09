@@ -18,7 +18,6 @@ namespace Moonstorm.Starstorm2.Buffs
         public override void Initialize()
         {
             var damageColor = SS2Assets.LoadAsset<SerializableDamageColor>("NukeDamageColor", SS2Bundle.Indev);
-            ColorsAPI.AddSerializableDamageColor(damageColor);
 
             var dotDef = new DotController.DotDef();
             dotDef.resetTimerOnAdd = true;

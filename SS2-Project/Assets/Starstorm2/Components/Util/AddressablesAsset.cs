@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
@@ -6,11 +7,11 @@ using UnityEngine.AddressableAssets;
 
 namespace Moonstorm.Starstorm2.Components
 {
-    [ExecuteAlways]
+    [ExecuteAlways, Obsolete("Use \"Addressable Injector\" instead")]
     public class AddressablesAsset : MonoBehaviour
     {
         public string Key;
-        private Object _asset;
+        private UnityEngine.Object _asset;
 
         [SerializeField]
         private Component _targetComponent;
@@ -24,7 +25,7 @@ namespace Moonstorm.Starstorm2.Components
 
         public void Refresh()
         {
-            _asset = Addressables.LoadAssetAsync<Object>(Key).WaitForCompletion();
+            _asset = Addressables.LoadAssetAsync<UnityEngine.Object>(Key).WaitForCompletion();
             if (!_asset)
             {
                 Debug.LogError($"AddressablesAsset failed loading {Key}");
