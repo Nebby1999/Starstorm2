@@ -11,7 +11,7 @@ using UnityEngine.Networking;
 namespace Moonstorm.Starstorm2.Components
 {
     [RequireComponent(typeof(HealthComponent))]
-    public class NukeSelfDamageController : MonoBehaviour, IStatItemBehavior
+    public class NukeSelfDamageController : MonoBehaviour
     {
         [SerializeField] private BuffDef _immunityBuffDef;
         [SerializeField] private BuffDef _selfDamageBuffDef;
@@ -45,7 +45,7 @@ namespace Moonstorm.Starstorm2.Components
         public float ChargeSoftCap { get; set; }
         public float ChargeHardCap { get; set; }
         public int SelfDamageBuffStacks { get; private set; }
-        public bool IsImmune => CharacterBody.AsValidOrNull()?.HasBuff(_immunityBuffDef) ?? false;
+        public bool IsImmune => CharacterBody.HasBuff(_immunityBuffDef);
         public HealthComponent HealthComponent { get; private set; }
         public CharacterBody CharacterBody { get; private set; }
         private float _timer;

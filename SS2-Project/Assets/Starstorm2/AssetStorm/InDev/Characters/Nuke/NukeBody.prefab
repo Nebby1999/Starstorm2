@@ -186,7 +186,7 @@ MonoBehaviour:
   baseArmor: 0
   baseVisionDistance: Infinity
   baseJumpCount: 1
-  sprintingSpeedMultiplier: 1.4
+  sprintingSpeedMultiplier: 1.35
   autoCalculateLevelStats: 1
   levelMaxHealth: 66
   levelRegen: 0.2
