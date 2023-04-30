@@ -43,9 +43,9 @@ MonoBehaviour:
         objectValue: {fileID: 0}
     - fieldName: baseUpwardVelocity
       fieldValue:
-        stringValue: 3
+        stringValue: 15
         objectValue: {fileID: 0}
     - fieldName: maxUpwardVelocity
       fieldValue:
-        stringValue: 20
+        stringValue: 25
         objectValue: {fileID: 0}
