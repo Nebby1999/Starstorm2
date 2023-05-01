@@ -1,4 +1,4 @@
-﻿using BepInEx;
+using BepInEx;
 using Moonstorm.Starstorm2.API;
 using R2API.Utils;
 using R2API;
@@ -13,6 +13,7 @@ namespace Moonstorm.Starstorm2
     [BepInDependency("com.bepis.r2api.networking")]
     [BepInDependency("com.bepis.r2api.prefab")]
     [BepInDependency("com.bepis.r2api.difficulty")]
+    [BepInDependency("com.bepis.r2api.tempvisualeffect")]
     #endregion
     [BepInDependency("com.TeamMoonstorm.MoonstormSharedUtils", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.DestroyedClone.AncientScepter", BepInDependency.DependencyFlags.SoftDependency)]
@@ -35,6 +36,7 @@ namespace Moonstorm.Starstorm2
 
         public static bool ScepterInstalled = false;
         public static bool RiskyModInstalled = false;
+        public static bool GOTCEInstalled = false;
 
         public void Awake()
         {
@@ -64,24 +66,14 @@ namespace Moonstorm.Starstorm2
         {
             SoundBankManager.Init();
             SetupModCompat();
-            //On.RoR2.EquipmentCatalog.Init += RemoveUnfitEquipmentsFromChaos;
         }
-
-        //private void RemoveUnfitEquipmentsFromChaos(EquipmentCatalog.orig_Init orig)
-        //{
-        //    orig();
-        //    SS2Content.Equipments.BackThruster.canBeRandomlyTriggered = false;
-        //    SS2Content.Equipments.PressurizedCanister.canBeRandomlyTriggered = false;
-        //    SS2Content.Equipments.MIDAS.canBeRandomlyTriggered = false;
-        //    //EquipmentCatalog.randomTriggerEquipmentList.Remove(SS2Content.Equipments.BackThruster.equipmentIndex);
-        //    //EquipmentCatalog.randomTriggerEquipmentList.Remove(SS2Content.Equipments.PressurizedCanister.equipmentIndex);
-        //}
 
         private void SetupModCompat()
         {
             //N: MSUtil has this method that just checks the bootloader, its cool and epic
             ScepterInstalled = MSUtil.IsModInstalled("com.DestroyedClone.AncientScepter");
             RiskyModInstalled = MSUtil.IsModInstalled("com.RiskyLives.RiskyMod");
+            GOTCEInstalled = BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.TheBestAssociatedLargelyLudicrousSillyheadGroup.GOTCE");
         }
     }
 }
