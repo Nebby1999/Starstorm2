@@ -1,4 +1,4 @@
-﻿using Moonstorm.Loaders;
+using Moonstorm.Loaders;
 using R2API;
 using R2API.ScriptableObjects;
 using RoR2;
@@ -97,6 +97,8 @@ namespace Moonstorm.Starstorm2
 
             public static ItemDef X4;
 
+            public static ItemDef BaneFlask;
+
             public static ItemDef NemesisBossHelper;
 
             public static ItemDef TerminationHelper;
@@ -105,6 +107,8 @@ namespace Moonstorm.Starstorm2
         public static class Equipments
         {
             public static EquipmentDef ElitePurpleEquipment;
+
+            public static EquipmentDef EliteKineticEquipment;
 
             public static EquipmentDef BackThruster;
 
@@ -145,6 +149,8 @@ namespace Moonstorm.Starstorm2
 
             public static BuffDef BuffIntoxicated;
 
+            public static BuffDef BuffInsecticide;
+
             public static BuffDef BuffCoffeeBag;
 
             public static BuffDef BuffNeedle;
@@ -173,13 +179,25 @@ namespace Moonstorm.Starstorm2
 
             public static BuffDef BuffSurrender;
 
-            public static BuffDef BuffTerminationVFX;
-
             public static BuffDef BuffX4;
 
             public static BuffDef bdElitePurple;
 
             public static BuffDef bdPurplePoison;
+
+            public static BuffDef bdEliteKinetic;
+
+            public static BuffDef bdHiddenSlow20;
+
+            public static BuffDef bdHiddenSpeed5;
+
+            public static BuffDef bdMULENet;
+
+            public static BuffDef bdExeCharge;
+
+            public static BuffDef bdCanJump;
+
+            public static BuffDef bdExeMuteCharge;
 			
             public static BuffDef BuffTerminationCooldown;
 
@@ -187,14 +205,19 @@ namespace Moonstorm.Starstorm2
 
             public static BuffDef BuffTerminationFailed;
 
+            public static BuffDef BuffTerminationVFX;
+
             public static BuffDef BuffEchelon;
 
             public static BuffDef bdRadiationSickness;
+
+            public static BuffDef BuffBane;
         }
 
         public static class Elites
         {
             //public static EliteDef edPurple;
+            public static EliteDef edKinetic;
         }
 
         public static class Survivors
@@ -276,17 +299,41 @@ namespace Moonstorm.Starstorm2
                 {
                     new Modules.Elites().Initialize();
                 },
-                delegate
-                {
-                    Typhoon.Init();
-                },
-                delegate
-                {
-                    if(SS2Config.EnableEvents.Value)
-                    {
-                        Events.Init();
-                    }
-                },
+				
+                Typhoon.Init,
+                Events.Init,
+				
+                //delegate
+                //{
+                //    //Deluge.Init();
+                //},
+                //delegate
+                //{
+                //    //Tempest.Init();
+                //},
+                //delegate
+                //{
+                //    //Cyclone.Init();
+                //},
+                //delegate
+                //{
+                //    Typhoon.Init();
+                //},
+                //delegate
+                //{
+                //    //SuperTyphoon.Init();
+                //},
+                //delegate
+                //{
+                //    Ethereal.Init();
+                //},
+                //delegate
+                //{
+                //    if(SS2Config.EnableEvents.Value)
+                //    {
+                //        Events.Init();
+                //    }
+                //},
                 delegate
                 {
                     new Modules.Characters().Initialize();
