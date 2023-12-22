@@ -45,6 +45,8 @@ namespace EntityStates.Executioner2
 
             HopIfAirborne();
 
+            characterDirection.turnSpeed = 360f;
+
             hits = new List<HurtBox>();
             fearSearch = new SphereSearch();
             fearSearch.mask = LayerIndex.entityPrecise.mask;
@@ -129,6 +131,11 @@ namespace EntityStates.Executioner2
                     if (body && body != base.characterBody)
                     {
                         body.AddTimedBuff(SS2Content.Buffs.BuffFear, debuffDuration);
+
+                        if(body.master && body.master.aiComponents[0])
+                        {
+                            body.master.aiComponents[0].stateMachine.SetNextState(new AI.Walker.Fear { fearTarget = base.gameObject });
+                        }
                     }
                 }
             }
@@ -137,6 +144,7 @@ namespace EntityStates.Executioner2
         public override void OnExit()
         {
             base.OnExit();
+            characterDirection.turnSpeed = 720f;
         }
 
         public override void FixedUpdate()

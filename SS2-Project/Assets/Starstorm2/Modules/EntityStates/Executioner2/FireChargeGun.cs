@@ -7,6 +7,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
+using static Moonstorm.Starstorm2.Items.ShackledLamp;
 
 namespace EntityStates.Executioner2
 {
@@ -32,6 +33,7 @@ namespace EntityStates.Executioner2
         public static GameObject hitPrefabMastery;
         private string skinNameToken;
         public bool fullBurst = false;
+        public bool firstShot = true;
 
         [HideInInspector]
         public static GameObject muzzlePrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/MuzzleflashFMJ.prefab").WaitForCompletion();
@@ -41,16 +43,22 @@ namespace EntityStates.Executioner2
         [HideInInspector]
         public static GameObject hitPrefab = Addressables.LoadAssetAsync<GameObject>("RoR2/Base/Commando/HitsparkCommandoShotgun.prefab").WaitForCompletion();
 
+        public int shotsToFire;
         public int shotsFired = 0;
 
         private float duration;
         private List<HurtBox> targets;
 
+        private LampBehavior lamp = null;
+
         public override void OnEnter()
         {
             base.OnEnter();
 
-            if (skillLocator.secondary.stock == 0)
+            if (firstShot)
+                shotsToFire = skillLocator.secondary.stock;
+
+            if (skillLocator.secondary.stock == 0 || shotsToFire == shotsFired)
                 return;
 
             duration = baseDuration / attackSpeedStat;
@@ -64,6 +72,8 @@ namespace EntityStates.Executioner2
             }
 
             skinNameToken = GetModelTransform().GetComponentInChildren<ModelSkinController>().skins[characterBody.skinIndex].nameToken;
+
+            lamp = GetModelTransform().GetComponent<CharacterModel>().body.GetComponent<LampBehavior>();
 
             if (skinNameToken == "SS2_SKIN_EXECUTIONER2_MASTERY")
             {
@@ -91,13 +101,15 @@ namespace EntityStates.Executioner2
 
             if (fixedAge >= duration && isAuthority)
             {
-                if (skillLocator.secondary.stock > 0)
+                if (skillLocator.secondary.stock > 0 && shotsToFire > shotsFired)
                 {
                     FireChargeGun nextState = new FireChargeGun();
                     nextState.shotsFired = shotsFired;
                     nextState.activatorSkillSlot = activatorSkillSlot;
                     if (fullBurst)
                         nextState.fullBurst = true;
+                    nextState.firstShot = false;
+                    nextState.shotsToFire = shotsToFire;
                     outer.SetNextState(nextState);
                     return;
                 }
@@ -119,6 +131,12 @@ namespace EntityStates.Executioner2
                 Ray ray = GetAimRay();
 
                 Vector3 vec = ray.direction;
+
+                if (lamp)
+                {
+                    lamp.IncrementFire();
+                    //SS2Log.Info("special lamp incrementing fire");
+                }
 
                 if (useAimAssist)
                 {
@@ -228,6 +246,7 @@ namespace EntityStates.Executioner2
                 }
 
                 bulletAttack.Fire();
+
 
                 if (skillLocator.secondary.stock == 1)
                 {

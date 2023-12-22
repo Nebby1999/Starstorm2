@@ -16,6 +16,7 @@ MonoBehaviour:
   eventState:
     _typeName: EntityStates.Events.FogSwampState, Starstorm2, Version=1.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  requiredStateMachine: 
   startMessageToken: SS2_EVENT_FOG_START
   endMessageToken: SS2_EVENT_FOG_END
   messageColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
@@ -23,18 +24,27 @@ MonoBehaviour:
   availableStages: 8
   customStageNames: []
   category: CommonEvents
-  selectionWeight: 50
+  selectionWeight: 20
   cost: 550
-  repeatedSelectionCostCoefficient: 2
+  repeatedSelectionCostCoefficient: 8
   minimumStageCompletions: 0
+  requiredUnlock:
+    _asset: {fileID: 0}
+    _address: 
+    _useDirectReference: 0
   requiredUnlockableDef:
     address: 
     useDirectReference: 1
     asset: {fileID: 0}
+  forbiddenUnlock:
+    _asset: {fileID: 0}
+    _address: 
+    _useDirectReference: 0
   forbiddenUnlockableDef:
     address: 
     useDirectReference: 1
     asset: {fileID: 0}
+  requiredExpansionDefs: []
   requiredExpansions:
   - address: 
     useDirectReference: 1

@@ -1,15 +1,39 @@
 ﻿using R2API.Utils;
 using RoR2;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Moonstorm.Starstorm2.Components
 {
     public class NemesisResistances : MonoBehaviour
     {
+        private CharacterBody body;
+
+        private void Awake()
+        {
+            this.body = base.GetComponent<CharacterBody>();
+            this.body.bodyFlags |= CharacterBody.BodyFlags.IgnoreFallDamage;
+        }
+        private void OnEnable()
+        {
+            On.RoR2.FogDamageController.EvaluateTeam += RemoveSelf;
+        }
+        private void OnDisable()
+        {
+            On.RoR2.FogDamageController.EvaluateTeam -= RemoveSelf;
+        }
+        // kinda cringe but theres no other way to do it afaict
+        private void RemoveSelf(On.RoR2.FogDamageController.orig_EvaluateTeam orig, FogDamageController self, TeamIndex teamIndex)
+        {
+            orig(self, teamIndex);
+            if (this.body && self.characterBodyToStacks.ContainsKey(this.body))
+                self.characterBodyToStacks.Remove(this.body);
+        }
+
         static NemesisResistances()
         {
             On.RoR2.HealthComponent.Suicide += ResistVoid;
-            On.RoR2.MapZone.TryZoneStart += TPBack;
+            //On.RoR2.MapZone.TryZoneStart += TPBack;
         }
 
         private static void ResistVoid(On.RoR2.HealthComponent.orig_Suicide orig, RoR2.HealthComponent self, GameObject killerOverride, GameObject inflictorOverride, DamageType damageType)
@@ -24,6 +48,7 @@ namespace Moonstorm.Starstorm2.Components
                     Debug.Log("master found");
                     if (damageType == DamageType.VoidDeath && body.GetComponent<NemesisResistances>() != null)
                     {
+                        body.SetBodyStateToPreferredInitialState();
                         Debug.Log("void death + nemresistances found");
                         //ChatMessage.SendColored("He laughs in the face of the void.", ColorCatalog.ColorIndex.VoidItem);
 

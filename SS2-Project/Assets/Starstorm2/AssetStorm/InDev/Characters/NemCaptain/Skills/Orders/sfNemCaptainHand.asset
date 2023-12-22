@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1627637702, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: sfNemCaptainHand
+  m_EditorClassIdentifier: 
+  variants:
+  - skillDef: {fileID: 11400000, guid: 319a86523503876499005465827ab0b2, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 319a86523503876499005465827ab0b2, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 120487a283b78d540ad6087c02cdf031, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 120487a283b78d540ad6087c02cdf031, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 120487a283b78d540ad6087c02cdf031, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 86f404ff2cb4c0f44a3326f4be2567f9, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 86f404ff2cb4c0f44a3326f4be2567f9, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 86f404ff2cb4c0f44a3326f4be2567f9, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: ab7b75b02971f194e822a6c9f8cabfe2, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: ab7b75b02971f194e822a6c9f8cabfe2, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 9287d9f3a2858dc428b6ed5a9b26bb2d, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 1a0514b65377d414ab8b0e8fed1f19d2, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: ab7b75b02971f194e822a6c9f8cabfe2, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: d18604efeb62dd54da59732fe4423c8a, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 17bb2fdcdd9cc5a4aba9d142345ccc30, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  - skillDef: {fileID: 11400000, guid: 17bb2fdcdd9cc5a4aba9d142345ccc30, type: 2}
+    unlockableName: 
+    unlockableDef: {fileID: 0}
+  defaultVariantIndex: 0

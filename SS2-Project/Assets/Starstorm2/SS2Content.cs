@@ -14,6 +14,8 @@ namespace Moonstorm.Starstorm2
         public static class Artifacts
         {
             public static ArtifactDef Cognation;
+
+            public static ArtifactDef Deviation;
         }
         public static class Items
         {
@@ -38,6 +40,8 @@ namespace Moonstorm.Starstorm2
             public static ItemDef Needles;
 
             public static ItemDef NemBossHelper;
+
+            public static ItemDef VoidRock;
 
             public static ItemDef BloodTester;
 
@@ -77,6 +81,8 @@ namespace Moonstorm.Starstorm2
 
             public static ItemDef StirringSoul;
 
+            public static ItemDef Remuneration;
+
             public static ItemDef RelicOfDuality;
 
             public static ItemDef RelicOfExtinction;
@@ -109,6 +115,8 @@ namespace Moonstorm.Starstorm2
             public static EquipmentDef ElitePurpleEquipment;
 
             public static EquipmentDef EliteKineticEquipment;
+
+            public static EquipmentDef equipDivineRight;
 
             public static EquipmentDef BackThruster;
 
@@ -212,6 +220,34 @@ namespace Moonstorm.Starstorm2
             public static BuffDef bdRadiationSickness;
 
             public static BuffDef BuffBane;
+
+            public static BuffDef BuffRiposte;
+
+            public static BuffDef BuffCyborgPrimary;
+
+            public static BuffDef BuffCyborgTeleporter;
+
+            public static BuffDef BuffBloonTrap;
+
+            public static BuffDef bdOverstress;
+
+            public static BuffDef bdNemCapDroneBuff;
+
+            public static BuffDef bdShield;
+
+            public static BuffDef bdParry;
+
+            public static BuffDef bdKnightBuff;
+
+            public static BuffDef bdFortified;
+
+            public static BuffDef bdKnightCharged;
+
+            public static BuffDef bdLampBuff;
+
+            public static BuffDef bdNemCapManaReduction;
+
+            public static BuffDef bdNemCapManaRegen;
         }
 
         public static class Elites
@@ -237,6 +273,10 @@ namespace Moonstorm.Starstorm2
 
             public static SurvivorDef survivorNemCommando;
 
+            public static SurvivorDef survivorNemCaptain;
+
+            public static SurvivorDef survivorNemMerc;
+
             //public static SurvivorDef SurvivorPyro;
         }
 
@@ -254,6 +294,13 @@ namespace Moonstorm.Starstorm2
         public override void Init()
         {
             base.Init();
+
+            Typhoon.Init();
+            Events.Init();
+            
+            //Bulwark.Init();
+            
+            //Ethereal.Init();
 
             LoadDispatchers = new Action[]
             {
@@ -302,41 +349,6 @@ namespace Moonstorm.Starstorm2
                 {
                     new Modules.Elites().Initialize();
                 },
-				
-                Typhoon.Init,
-                Events.Init,
-				
-                //delegate
-                //{
-                //    //Deluge.Init();
-                //},
-                //delegate
-                //{
-                //    //Tempest.Init();
-                //},
-                //delegate
-                //{
-                //    //Cyclone.Init();
-                //},
-                //delegate
-                //{
-                //    Typhoon.Init();
-                //},
-                //delegate
-                //{
-                //    //SuperTyphoon.Init();
-                //},
-                //delegate
-                //{
-                //    Ethereal.Init();
-                //},
-                //delegate
-                //{
-                //    if(SS2Config.EnableEvents.Value)
-                //    {
-                //        Events.Init();
-                //    }
-                //},
                 delegate
                 {
                     new Modules.Characters().Initialize();
@@ -378,6 +390,7 @@ namespace Moonstorm.Starstorm2
                     SS2Log.Info($"Swapping material shaders");
                     SS2Assets.Instance.SwapMaterialShaders();
                     SS2Assets.Instance.FinalizeCopiedMaterials();
+                    SS2Log.Info($"Finished swapping material shaders");
                 }
             };
 
