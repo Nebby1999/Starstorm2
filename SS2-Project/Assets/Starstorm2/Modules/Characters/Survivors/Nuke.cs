@@ -33,7 +33,7 @@ namespace Moonstorm.Starstorm2.Survivors
             cb.preferredPodPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod");
             cb._defaultCrosshairPrefab = Resources.Load<GameObject>("Prefabs/Crosshair/StandardCrosshair");
             var ctp = BodyPrefab.GetComponent<CameraTargetParams>();
-            ctp.cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Commando/ccpCommando.asset").WaitForCompletion();
+            ctp.cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Croco/ccpCroco.asset").WaitForCompletion();
 
             SS2Assets.LoadAsset<GameObject>("NukeSludgeProjectile", SS2Bundle.Indev).AddComponent<R2API.DamageAPI.ModdedDamageTypeHolderComponent>();
         }
