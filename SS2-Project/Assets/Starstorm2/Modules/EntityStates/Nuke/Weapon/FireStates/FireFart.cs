@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using R2API.ScriptableObjects;
 using Moonstorm;
+using RoR2.Projectile;
 
 namespace EntityStates.Nuke.Weapon
 {
@@ -20,10 +21,13 @@ namespace EntityStates.Nuke.Weapon
         public static float baseUpwardVelocity;
         public static float maxUpwardVelocity;
         public static Vector3 bonusForce;
+        public static GameObject poolProjectile;
+        public static GameObject poolDOT;
 
         private BlastAttack _blastAttack;
         public override void OnEnter()
         {
+            bool crit = RollCrit();
             base.OnEnter();
             if(isAuthority)
             {
@@ -42,7 +46,7 @@ namespace EntityStates.Nuke.Weapon
                     damageType = DamageType.Stun1s,
                     position = characterBody.footPosition,
                     canRejectForce = false,
-                    crit = RollCrit(),
+                    crit = crit,
                     damageColorIndex = damageColor.DamageColorIndex,
                 };
                 _blastAttack.Fire();
@@ -53,6 +57,31 @@ namespace EntityStates.Nuke.Weapon
                     float yVelocity = baseUpwardVelocity * Charge;
                     velocity.y = Mathf.Min(yVelocity, maxUpwardVelocity);
                     characterMotor.velocity = velocity;
+                    FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+                    {
+                        crit = crit,
+                        damage = damageStat * Charge * extraDamageCoefficient,
+                        damageColorIndex = damageColor.DamageColorIndex,
+                        owner = gameObject,
+                        position = characterBody.footPosition,
+                        rotation = Util.QuaternionSafeLookRotation(Vector3.down),
+                        projectilePrefab = poolProjectile,
+                    };
+                    ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+                }
+                else
+                {
+                    FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+                    {
+                        crit = crit,
+                        damage = damageStat * Charge * extraDamageCoefficient,
+                        damageColorIndex = damageColor.DamageColorIndex,
+                        owner = gameObject,
+                        position = characterBody.footPosition,
+                        rotation = Quaternion.identity,
+                        projectilePrefab = poolDOT,
+                    };
+                    ProjectileManager.instance.FireProjectile(fireProjectileInfo);
                 }
             }
         }

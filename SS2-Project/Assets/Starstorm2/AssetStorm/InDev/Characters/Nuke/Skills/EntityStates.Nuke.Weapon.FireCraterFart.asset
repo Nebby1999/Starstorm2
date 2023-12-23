@@ -53,3 +53,8 @@ MonoBehaviour:
       fieldValue:
         stringValue: 80
         objectValue: {fileID: 0}
+    - fieldName: poolDOT
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 5889861227055509402, guid: e119e5bcc2eab834297dd8da79826015,
+          type: 3}

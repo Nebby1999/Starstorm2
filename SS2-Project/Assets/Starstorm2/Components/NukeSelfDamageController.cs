@@ -61,7 +61,7 @@ namespace Moonstorm.Starstorm2.Components
             _timer += Time.fixedDeltaTime;
             if(_timer > _timeBetweenTicks)
             {
-                _timer = 0;
+                _timer -= _timeBetweenTicks;
                 TryDealDamage();
             }
         }

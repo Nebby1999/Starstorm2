@@ -49,3 +49,13 @@ MonoBehaviour:
       fieldValue:
         stringValue: 25
         objectValue: {fileID: 0}
+    - fieldName: poolProjectile
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 3017407370360207458, guid: 74042442dd7b71c4d86511fc637cda36,
+          type: 3}
+    - fieldName: poolDOT
+      fieldValue:
+        stringValue: 
+        objectValue: {fileID: 5889861227055509402, guid: e119e5bcc2eab834297dd8da79826015,
+          type: 3}

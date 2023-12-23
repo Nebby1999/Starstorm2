@@ -1,6 +1,7 @@
 ﻿using Moonstorm;
 using R2API.ScriptableObjects;
 using RoR2;
+using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace EntityStates.Nuke.Weapon
         public static float airControlDuringFall;
         public static float baseDownardsVelocity;
         public static float maxDownardsVelocity;
+        public static GameObject poolDOT;
 
         private float originalAirControl;
         private bool isCrit;
@@ -68,6 +70,17 @@ namespace EntityStates.Nuke.Weapon
                         damageColorIndex = damageColor.DamageColorIndex,
                     };
                     blastAttack.Fire();
+                    FireProjectileInfo info = new FireProjectileInfo
+                    {
+                        crit = isCrit,
+                        damage = damageStat * extraDamageCoefficient * Charge,
+                        damageColorIndex = damageColor.DamageColorIndex,
+                        owner = gameObject,
+                        position = characterBody.footPosition,
+                        projectilePrefab = poolDOT,
+                        rotation = Quaternion.identity,
+                    };
+                    ProjectileManager.instance.FireProjectile(info);
                     outer.SetNextStateToMain();
                 }
             }

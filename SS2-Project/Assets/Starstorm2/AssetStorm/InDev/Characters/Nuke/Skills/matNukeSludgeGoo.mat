@@ -65,4 +65,4 @@ Material:
     - _ZTest: 4
     m_Colors:
     - _CutoffScroll: {r: 1, g: 3, b: 3, a: 1}
-    - _TintColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+    - _TintColor: {r: 1, g: 1, b: 1, a: 1}
