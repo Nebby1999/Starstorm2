@@ -18,9 +18,10 @@ MonoBehaviour:
   keywordTokens:
   - SS2_KEYWORD_CHARGEABLE
   icon: {fileID: 0}
-  activationStateMachineName: Body
+  activationStateMachineName: Weapon
   activationState:
-    _typeName: 
+    _typeName: EntityStates.Nuke.Weapon.ChargeLaunch, Starstorm2, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   interruptPriority: 1
   baseRechargeInterval: 6
   baseMaxStock: 1
@@ -30,9 +31,9 @@ MonoBehaviour:
   resetCooldownTimerOnUse: 0
   fullRestockOnAssign: 1
   dontAllowPastMaxStocks: 0
-  beginSkillCooldownOnSkillEnd: 0
+  beginSkillCooldownOnSkillEnd: 1
   cancelSprintingOnActivation: 1
   forceSprintDuringState: 0
   canceledFromSprinting: 0
-  isCombatSkill: 0
+  isCombatSkill: 1
   mustKeyPress: 0

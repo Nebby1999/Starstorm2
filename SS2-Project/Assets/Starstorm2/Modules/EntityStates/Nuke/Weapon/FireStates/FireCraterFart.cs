@@ -1,4 +1,5 @@
 ﻿using Moonstorm;
+using R2API;
 using R2API.ScriptableObjects;
 using RoR2;
 using RoR2.Projectile;
@@ -69,6 +70,7 @@ namespace EntityStates.Nuke.Weapon
                         crit = isCrit,
                         damageColorIndex = damageColor.DamageColorIndex,
                     };
+                    blastAttack.AddModdedDamageType(Moonstorm.Starstorm2.DamageTypes.Nuclear.NuclearDamageType);
                     blastAttack.Fire();
                     FireProjectileInfo info = new FireProjectileInfo
                     {

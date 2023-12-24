@@ -13,8 +13,6 @@ namespace Moonstorm.Starstorm2.Components
     [RequireComponent(typeof(HealthComponent))]
     public class NukeSelfDamageController : MonoBehaviour
     {
-        [SerializeField] private BuffDef _immunityBuffDef;
-        [SerializeField] private BuffDef _selfDamageBuffDef;
         [SerializeField] private SerializableDamageColor _selfDamageColor;
         [SerializeField] private float _maxHPCoefficientAsDamage;
         [SerializeField] private float _timeBetweenTicks;
@@ -45,7 +43,7 @@ namespace Moonstorm.Starstorm2.Components
         public float ChargeSoftCap { get; set; }
         public float ChargeHardCap { get; set; }
         public int SelfDamageBuffStacks { get; private set; }
-        public bool IsImmune => CharacterBody.HasBuff(_immunityBuffDef);
+        public bool IsImmune => CharacterBody.HasBuff(SS2Content.Buffs.bdNukeSpecial);
         public HealthComponent HealthComponent { get; private set; }
         public CharacterBody CharacterBody { get; private set; }
         private float _timer;
@@ -71,9 +69,9 @@ namespace Moonstorm.Starstorm2.Components
             if(IsImmune)
             {
                 SelfDamageBuffStacks = 0;
-                if (CharacterBody.GetBuffCount(_selfDamageBuffDef) > 0 && NetworkServer.active)
+                if (CharacterBody.GetBuffCount(SS2Content.Buffs.bdNukeSelfDamage) > 0 && NetworkServer.active)
                 {
-                    CharacterBody.RemoveBuff(_selfDamageBuffDef);
+                    CharacterBody.RemoveBuff(SS2Content.Buffs.bdNukeSelfDamage);
                 }
                 return;
             }
@@ -84,7 +82,7 @@ namespace Moonstorm.Starstorm2.Components
             {
                 SelfDamageBuffStacks = newBuffStacks;
                 if (NetworkServer.active)
-                    CharacterBody.SetBuffCount(_selfDamageBuffDef.buffIndex, SelfDamageBuffStacks);
+                    CharacterBody.SetBuffCount(SS2Content.Buffs.bdNukeSelfDamage.buffIndex, SelfDamageBuffStacks);
             }
         }
 
@@ -110,11 +108,11 @@ namespace Moonstorm.Starstorm2.Components
             HealthComponent.TakeDamage(damageInfo);
         }
 
-        public void SetDefaults(EntityStates.Nuke.Weapon.BaseNukeWeaponChargeState state)
+        public void SetDefaults(EntityStates.Nuke.Weapon.BaseNukeWeaponChargeState weaponState)
         {
-            Charge = state?.CurrentCharge ?? 0;
-            ChargeHardCap = state?.chargeCoefficientHardCap ?? 0;
-            ChargeSoftCap = state?.chargeCoefficientSoftCap ?? 0;
+            Charge = weaponState?.CurrentCharge ?? 0;
+            ChargeHardCap = weaponState?.chargeCoefficientHardCap ?? 0;
+            ChargeSoftCap = weaponState?.chargeCoefficientSoftCap ?? 0;
         }
     }
 }

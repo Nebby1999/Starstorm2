@@ -14,7 +14,6 @@ namespace EntityStates.Nuke.Weapon
         public static GameObject chargePrefab;
         public static string leftMuzzleChildName;
         public static string rightMuzzleChildName;
-        public override ref InputBankTest.ButtonState TiedBankButton => ref inputBank.skill1;
 
         private string chosenMuzzle;
         private Transform muzzleTransform;
@@ -45,7 +44,7 @@ namespace EntityStates.Nuke.Weapon
             }
         }
 
-        public override BaseNukeWeaponFireState GetFireState()
+        protected override BaseNukeWeaponFireState GetFireState()
         {
             var fireSludge = new FireSludge();
             fireSludge.chosenMuzzleString = chosenMuzzle;

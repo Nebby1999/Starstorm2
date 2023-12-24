@@ -24,7 +24,6 @@ namespace EntityStates.Nuke.Weapon
 
         public NukeSelfDamageController SelfDamageController { get; private set; }
         public float CurrentCharge { get; protected set; }
-        public abstract ref InputBankTest.ButtonState TiedBankButton { get; }
 #if DEBUG
         public string TypeName { get; private set; }
 #endif
@@ -35,6 +34,8 @@ namespace EntityStates.Nuke.Weapon
             SelfDamageController = GetComponent<NukeSelfDamageController>();
             CurrentCharge = startingChargeCoefficient;
             chargeGain = baseChargeGain * attackSpeedStat;
+            if (SelfDamageController.IsImmune)
+                chargeGain *= 2f;
 #if DEBUG
             TypeName = GetType().Name;
 #endif
@@ -44,7 +45,7 @@ namespace EntityStates.Nuke.Weapon
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if(TiedBankButton.down)
+            if(IsKeyDownAuthority())
             {
 #if DEBUG
                 var oldCharge = CurrentCharge;
@@ -78,12 +79,12 @@ namespace EntityStates.Nuke.Weapon
 
             if(SelfDamageController)
             {
-                SelfDamageController.SetDefaults(null);
+                SelfDamageController.SetDefaults(weaponState: null);
             }
 
             outer.SetNextState(nextState);
         }
-        public abstract BaseNukeWeaponFireState GetFireState();
+        protected abstract BaseNukeWeaponFireState GetFireState();
     }
 
 }

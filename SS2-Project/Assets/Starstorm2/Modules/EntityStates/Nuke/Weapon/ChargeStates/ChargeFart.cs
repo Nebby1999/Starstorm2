@@ -10,9 +10,8 @@ namespace EntityStates.Nuke.Weapon
         public static float lookThreshold;
 
         private Ray aimRay;
-        public override ref InputBankTest.ButtonState TiedBankButton => ref inputBank.skill2;
 
-        public override BaseNukeWeaponFireState GetFireState()
+        protected override BaseNukeWeaponFireState GetFireState()
         {
             aimRay = GetAimRay();
             var normalizedDirection = aimRay.direction.normalized;

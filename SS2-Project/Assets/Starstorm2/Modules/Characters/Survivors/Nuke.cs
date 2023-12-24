@@ -19,7 +19,7 @@ namespace Moonstorm.Starstorm2.Survivors
         {
             base.Initialize();
             var selfDamage = SS2Assets.LoadAsset<BuffDef>("bdNukeSelfDamage", SS2Bundle.Indev);
-            var immune = SS2Assets.LoadAsset<BuffDef>("bdNukeImmune", SS2Bundle.Indev);
+            var immune = SS2Assets.LoadAsset<BuffDef>("bdNukeSpecial", SS2Bundle.Indev);
 
             HG.ArrayUtils.ArrayAppend(ref SS2Content.Instance.SerializableContentPack.buffDefs, selfDamage);
             HG.ArrayUtils.ArrayAppend(ref SS2Content.Instance.SerializableContentPack.buffDefs, immune);
@@ -35,7 +35,8 @@ namespace Moonstorm.Starstorm2.Survivors
             var ctp = BodyPrefab.GetComponent<CameraTargetParams>();
             ctp.cameraParams = Addressables.LoadAssetAsync<CharacterCameraParams>("RoR2/Base/Croco/ccpCroco.asset").WaitForCompletion();
 
-            SS2Assets.LoadAsset<GameObject>("NukeSludgeProjectile", SS2Bundle.Indev).AddComponent<R2API.DamageAPI.ModdedDamageTypeHolderComponent>();
+            SS2Assets.LoadAsset<GameObject>("NukeSludgeProjectile", SS2Bundle.Indev).AddComponent<R2API.DamageAPI.ModdedDamageTypeHolderComponent>().Add(DamageTypes.Nuclear.NuclearDamageType);
+            SS2Assets.LoadAsset<GameObject>("NukePoolDOT", SS2Bundle.Indev).AddComponent<DamageAPI.ModdedDamageTypeHolderComponent>().Add(DamageTypes.Nuclear.NuclearDamageType);
         }
     }
 }

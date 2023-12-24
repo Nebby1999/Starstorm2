@@ -25,18 +25,24 @@ namespace Moonstorm.Starstorm2.DamageTypes
             var attackerBody = report.attackerBody;
             var damageInfo = report.damageInfo;
 
-            if(victimBody && attackerBody && damageInfo.HasModdedDamageType(ModdedDamageType))
+            if(victimBody && attackerBody && damageInfo.HasModdedDamageType(NuclearDamageType))
             {
-                var dotInfo = new InflictDotInfo
+                if(attackerBody.HasBuff(SS2Content.Buffs.bdNukeSpecial))
                 {
-                    attackerObject = attackerBody.gameObject,
-                    damageMultiplier = 1,
-                    dotIndex = Buffs.NukeRadiationSickness.DotIndex,
-                    duration = 2,
-                    victimObject = victimBody.gameObject
-                };
-
-                DotController.InflictDot(ref dotInfo);
+                    var dotInfo = new InflictDotInfo
+                    {
+                        attackerObject = attackerBody.gameObject,
+                        damageMultiplier = 1,
+                        dotIndex = Buffs.NukeRadiationSickness.DotIndex,
+                        duration = 2,
+                        victimObject = victimBody.gameObject
+                    };
+                    DotController.InflictDot(ref dotInfo);
+                }
+                else
+                {
+                    victimBody.AddTimedBuff(SS2Content.Buffs.bdRadiationSickness, 2, 10);
+                }
             }
         }
     }

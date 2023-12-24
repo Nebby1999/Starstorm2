@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityStates.Nuke.Weapon
 {
-    public abstract class BaseNukeWeaponFireState : BaseSkillState
+    public abstract class BaseNukeWeaponFireState : BaseState
     {
         public float Charge { get; set; }
     }

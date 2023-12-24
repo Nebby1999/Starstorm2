@@ -165,8 +165,6 @@ namespace Moonstorm.Starstorm2
 
             public static BuffDef BuffNeedleBuildup;
 
-            public static BuffDef BuffNucleatorSpecial;
-
             public static BuffDef BuffReactor;
 
             public static BuffDef BuffScavengersFortune;
@@ -218,6 +216,10 @@ namespace Moonstorm.Starstorm2
             public static BuffDef BuffEchelon;
 
             public static BuffDef bdRadiationSickness;
+
+            public static BuffDef bdNukeSpecial;
+
+            public static BuffDef bdNukeSelfDamage;
 
             public static BuffDef BuffBane;
 
