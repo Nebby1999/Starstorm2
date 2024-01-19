@@ -18,6 +18,8 @@ namespace Moonstorm.Starstorm2
             public static ArtifactDef Havoc;
             
             public static ArtifactDef Deviation;
+
+            public static ArtifactDef Adversity;
         }
         public static class Items
         {
@@ -46,6 +48,8 @@ namespace Moonstorm.Starstorm2
             public static ItemDef NemBossHelper;
 
             public static ItemDef VoidRock;
+
+            public static ItemDef VoidRockTracker;
 
             public static ItemDef BloodTester;
 
@@ -78,6 +82,8 @@ namespace Moonstorm.Starstorm2
             public static ItemDef LowQualitySpeakers;
 
             public static ItemDef Augury;
+
+            public static ItemDef SantaHat;
 
             public static ItemDef ScavengersFortune;
 
@@ -113,7 +119,7 @@ namespace Moonstorm.Starstorm2
 
             public static ItemDef TerminationHelper;
 
-            public static ItemDef HavocHelper;
+            public static ItemDef GildedAmulet;
         }
 
         public static class Equipments
@@ -312,10 +318,13 @@ namespace Moonstorm.Starstorm2
 
             Typhoon.Init();
             Events.Init();
-            
+
             //Bulwark.Init();
-            
+
             //Ethereal.Init();
+            Components.EtherealBehavior.Init();
+
+            Void.Init();
 
             LoadDispatchers = new Action[]
             {

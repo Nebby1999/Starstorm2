@@ -25,17 +25,16 @@ namespace Moonstorm.Starstorm2
     {
         internal const string guid = "com.TeamMoonstorm.Starstorm2";
         internal const string modName = "Starstorm 2";
-        internal const string version = "0.5.7";
+        internal const string version = "0.6.6";
 
         public static Starstorm instance;
         public static PluginInfo pluginInfo;
-        public static bool DEBUG = true;
+        public static bool DEBUG = false;
 
         public static bool ScepterInstalled = false;
         public static bool RiskyModInstalled = false;
         public static bool GOTCEInstalled = false;
         public static bool StageAesthInstalled = false;
-
         public void Awake()
         {
             instance = this;
